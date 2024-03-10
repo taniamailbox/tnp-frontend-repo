@@ -1,0 +1,16 @@
+<div class="border border-primary p-3 my-5 w-50 mx-auto">
+    <h1>Login</h1>
+    <strong class="p-2 border border-info d-flex justify-content-center" *ngIf="message">{{message}}</strong>
+    <form [formGroup]="formGroup" (ngSubmit)="submitForm(formGroup)" novalidate autocomplete="off">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="email">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

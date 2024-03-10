@@ -1,0 +1,27 @@
+#main { 
+	/* position: fixed; 
+	top: 30%;  */
+	border: 0px solid #421; 
+	padding: 40px; 
+	width: 65%;
+	margin: auto;
+}
+#main div { 
+	margin: 10px; 
+} 
+#input { 
+	border: 0; 
+	padding: 5px; 
+	border: 1px solid #421; 
+	width: 100%;
+}
+
+.chat-box {
+	height: 400px;
+	overflow-y: scroll;
+	padding: 10px;
+}
+
+small {
+	font-size: 10px;
+}

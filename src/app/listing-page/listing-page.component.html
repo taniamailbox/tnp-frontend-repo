@@ -1,0 +1,77 @@
+<div class="listing-section p-3">
+  <div class="row">
+    <div class="col-md-9">
+      <h3>Products Listing</h3>
+    </div>
+    <div class="col-md-3">
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" (keyup)="applyFilter($event)" (search)="applyFilter($event)" #input autocomplete="off">
+      </form>
+    </div>
+  </div>
+  <ng-container *ngIf="cars.length">
+    <ng-container *ngFor="let car of cars | paginate: { itemsPerPage: itemsPerPage, currentPage: p, totalItems: carsBkp?.length }; let i = index; trackBy:trackByMethod">
+      <div class="row mb-3" *ngIf="i % 4 === 0">
+        <div class="col-md-3">
+          <div class="product">
+            <div class="image-box">
+              <img src="{{cars[i]?.images?.blue}}" class="images">
+            </div>
+            <div class="text-box">
+              <h2 class="item">{{cars[i].brand + ' ' + cars[i].model}}</h2>
+              <h3 class="price">{{cars[i].discPrice}}</h3>
+              <p class="description">Year: {{cars[i].year}}</p>
+              <a class="view" routerLink="/product/{{cars[i].id}}">View</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="product" *ngIf="cars[i+1]?.id">
+            <div class="image-box">
+              <img src="{{cars[i+1]?.images?.blue}}" class="images">
+            </div>
+            <div class="text-box">
+              <h2 class="item">{{cars[i+1].brand + ' ' + cars[i+1].model}}</h2>
+              <h3 class="price">{{cars[i+1].discPrice}}</h3>
+              <p class="description">Year: {{cars[i+1].year}}</p>
+              <a class="view" routerLink="/product/{{cars[i+1].id}}">View</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="product" *ngIf="cars[i+2]?.id">
+            <div class="image-box">
+              <img src="{{cars[i+2]?.images?.blue}}" class="images">
+            </div>
+            <div class="text-box">
+              <h2 class="item">{{cars[i+2].brand + ' ' + cars[i+2].model}}</h2>
+              <h3 class="price">{{cars[i+2].discPrice}}</h3>
+              <p class="description">Year: {{cars[i+2].year}}</p>
+              <a class="view" routerLink="/product/{{cars[i+2].id}}">View</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="product" *ngIf="cars[i+3]?.id">
+            <div class="image-box">
+              <img src="{{cars[i+3]?.images?.blue}}" class="images">
+            </div>
+            <div class="text-box">
+              <h2 class="item">{{cars[i+3].brand + ' ' + cars[i+3].model}}</h2>
+              <h3 class="price">{{cars[i+3].discPrice}}</h3>
+              <p class="description">Year: {{cars[i+3].year}}</p>
+              <a class="view" routerLink="/product/{{cars[i+3].id}}">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <pagination-controls (pageChange)="pageChanged($event)" ></pagination-controls>
+    
+  </ng-container>
+  <ng-container *ngIf="cars.length == 0">
+    <div class="row mt-4">
+      <div class="col-md-12 text-center">No Cars</div>
+    </div>
+  </ng-container>
+</div>

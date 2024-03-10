@@ -1,0 +1,20 @@
+<ng-container *ngIf="!userToken">
+    <div class="login-wrap mx-auto w-25 my-5">
+        <a routerLink="/login" class="d-inline-block mx-1">Login</a>|<a routerLink="/register" class="d-inline-block mx-1">Register</a>
+    </div>  
+</ng-container>
+<ng-container *ngIf="userToken">
+    <h1 class="mt-4">
+        Welcome to Chat Suport!
+    </h1>
+    <div id="main">
+        <div><input id="input" type="text" placeholder="Say something..." autocomplete="off" [(ngModel)]="userInput"
+                (keyup.enter)="sendMessage()" /></div>
+        <div class="chat-box">
+            <ng-container *ngFor="let item of messages">
+                <span class="d-inline-block text-start position-relative">{{item?.answer}}<small class="position-absolute top-100 fst-italic text-secondary text-nowrap">{{item?.createdAt | date: 'd/M/yy HH:mm'}}</small></span><br>
+                <span class="d-inline-block text-end position-relative float-end"><small class="position-absolute top-100 fst-italic text-secondary end-100 text-nowrap">{{item?.createdAt | date: 'd/M/yy HH:mm'}}</small>{{item?.question}}</span><br>
+            </ng-container>
+        </div>
+    </div>
+</ng-container>
